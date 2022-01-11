@@ -1,0 +1,44 @@
+/**
+Medium
+
+Given a non-negative integer n, return the length of the longest consecutive run of 1s in its binary representation.
+
+Constraints
+
+0 ≤ n < 2 ** 31
+
+**/
+
+import java.util.*;
+
+class Solution {
+    public int solve(int n) {
+        int count=0;
+        int ans=0;
+
+        while(n>0)
+        {
+            if(n%2!=0)
+            {
+                count++;
+            }
+            else
+            {
+                if(count>ans)
+                {
+                    ans=count;
+                }
+                count=0;
+            }
+             n=n/2;
+        }
+        if(count>ans)
+        {
+            ans=count;
+        }
+        return ans;
+    }
+}
+
+Time complexity O(log n) 
+Space Complexity -O(1)
