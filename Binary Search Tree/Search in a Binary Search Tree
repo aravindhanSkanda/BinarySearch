@@ -1,0 +1,35 @@
+Medium
+
+Given a binary search tree root and an integer val, determine whether val is in the tree.
+
+Constraints
+
+n ≤ 100,000 where n is the number of nodes in root
+
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+ 
+class Solution {
+    public boolean solve(Tree root, int val) {
+        if(root==null)
+        {
+            return false;
+        }
+        if(root.val==val)
+        {
+            return true;
+        }
+        return solve(root.left,val)|| solve(root.right,val);
+    }
+}
+
+
+//Time Complexity O(n) -m-> no of nodes in the tree
+//Space Complexity O(1)
