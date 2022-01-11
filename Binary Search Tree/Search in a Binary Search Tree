@@ -31,5 +31,5 @@ class Solution {
 }
 
 
-//Time Complexity O(n) -m-> no of nodes in the tree
+//Time Complexity O(n) -n-> no of nodes in the tree
 //Space Complexity O(1)
