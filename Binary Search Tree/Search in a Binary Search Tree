@@ -15,7 +15,6 @@ import java.util.*;
  *   Tree right;
  * }
  */
- 
 class Solution {
     public boolean solve(Tree root, int val) {
         if(root==null)
@@ -26,10 +25,14 @@ class Solution {
         {
             return true;
         }
-        return solve(root.left,val)|| solve(root.right,val);
+        if(root.val>val)
+        {
+        return solve(root.left,val);
+        }
+        return solve(root.right,val);
     }
 }
 
 
-//Time Complexity O(n) -n-> no of nodes in the tree
+//Time Complexity O(log n) -n-> no of nodes in the tree
 //Space Complexity O(1)
