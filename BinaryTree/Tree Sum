@@ -1,0 +1,33 @@
+/**
+Medium
+
+Given a binary tree root, return the sum of all values in the tree.
+
+Constraints
+
+n ≤ 100,000 where n is the number of nodes in root
+
+**/
+
+
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+class Solution {
+    public int solve(Tree root) {
+        if(root==null)
+        {
+            return 0;
+        }
+        return solve(root.left)+ solve(root.right)+ root.val;
+    }
+}
+
+// Time Complexity - O(n) -> Number of nodes in the tree.
+// Space Complexity - O(1)
