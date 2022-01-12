@@ -1,0 +1,44 @@
+/*
+Medium
+
+Given a binary search tree root, replace every node's value v by its value plus the sum of all other values in the tree that are greater than v.
+
+Constraints
+
+n ≤ 100,000 where n is the number of nodes in root
+*/
+
+
+
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+class Solution {
+    public Tree solve(Tree root) {
+        calculate(root,0);
+        return root;
+    }
+
+    private int  calculate(Tree root, int sum)
+    {
+        if(root==null)
+        {
+            return 0;
+        }
+      int r=  calculate(root.right, sum);
+      root.val=root.val+r+sum;
+      
+      int h=calculate(root.left, root.val);
+
+      return root.val-sum+h;
+    }
+}
+
+TimeComplexity- O(n) - n - no of nodes in the tree
+Space Complexity -O(1) 
