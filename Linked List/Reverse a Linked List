@@ -1,0 +1,34 @@
+/*Given a singly linked list node, return its reverse.
+
+Bonus: Can you do this in \mathcal{O}(1)O(1) space?
+
+Constraints
+
+n ≤ 100,000 where n is the number of nodes in node
+*/
+
+import java.util.*;
+
+/**
+ * class LLNode {
+ *   int val;
+ *   LLNode next;
+ * }
+ */
+class Solution {
+    public LLNode solve(LLNode node) {
+        LLNode prev=null;
+        while(node!=null)
+        {
+        LLNode next=node.next;
+        node.next=prev;
+        prev=node;
+        node=next;
+        }
+        return prev;
+    }
+}
+
+Time Complexity- O(n)
+Space Complexity- O(1)
+
