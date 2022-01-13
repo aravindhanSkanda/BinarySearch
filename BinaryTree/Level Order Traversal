@@ -1,0 +1,40 @@
+/*Given a binary tree root return a level order traversal of the node values.
+
+Constraints
+
+n ≤ 100,000 where n is the number of nodes in root
+
+*/
+
+
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+class Solution {
+    public int[] solve(Tree root) {
+        ArrayList <Integer> list = new ArrayList();
+        Queue <Tree> queue = new ArrayDeque();
+        queue.add(root);
+        while(!queue.isEmpty()) 
+        {
+            Tree tree =queue.remove();
+            list.add(tree.val);
+            if(tree.left!=null)
+            queue.add(tree.left);
+            if(tree.right!=null)
+            queue.add(tree.right);
+        }
+        return list.stream().mapToInt(k->k).toArray();
+    }
+}
+
+
+Time Complexity- O(n)
+Space Complexity - O(n)
+
