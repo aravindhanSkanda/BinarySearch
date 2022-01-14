@@ -1,0 +1,53 @@
+Medium
+
+Given a binary tree root, consider deleting an edge in the tree so that the tree becomes disjoint with two trees. Then, take the sum of each subtree and multiply the two numbers. Return the largest such product we can get after deleting one edge.
+
+Constraints
+
+n ≤ 100,000 where n is the number of nodes in root
+
+
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+class Solution {
+    private static int ans=0;
+    public int solve(Tree root) {
+        ans=0;
+       int sum=calculate(root);
+       calculate1(root, sum);
+       return ans;
+    }
+
+    private static Integer calculate1(Tree root, Integer sum)
+    {
+        if(root==null)
+        {
+            return 0;
+        }
+        int lef=calculate1(root.left,sum);
+        int rig=calculate1(root.right,sum);
+        ans=Math.max(ans, (sum-rig) * rig);
+        ans=Math.max(ans, (sum-lef) * lef);
+        return lef+rig+root.val;
+    }
+
+    private static Integer calculate(Tree root)
+    {
+        if(root==null)
+        {
+            return 0;
+        }
+        return calculate(root.left)+calculate(root.right)+root.val;
+    }
+}
+
+
+Time complexity- O(n)
+Space Complexity- O(1)
