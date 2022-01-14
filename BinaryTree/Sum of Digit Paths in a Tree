@@ -1,0 +1,54 @@
+Medium
+
+You are given a binary tree root with each node containing single digits from 0 to 9. Each path from the root to the leaf represents a number with its digits in order.
+
+Return the sum of numbers represented by all paths in the tree.
+
+
+
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+class Solution {
+    
+    private static int ans=0;
+
+    public int solve(Tree root) {
+        ans=0;
+        calculate(root, 0);
+        return ans;
+    }
+
+    private static void calculate(Tree root, Integer sum)
+    {
+        if(root==null)
+        {
+            ans+=sum;
+        }
+         if(root.left==null && root.right==null)
+        {
+            sum=sum*10 +root.val;
+            ans+=sum;
+            return;
+        }
+        if(root.left!=null)
+        {
+        calculate(root.left, (sum*10) + root.val);
+        }
+        if(root.right!=null)
+        {
+        calculate(root.right, (sum*10) +root.val);
+        }
+       
+    }
+
+}
+
+Time Complexity-O(n)
+Space Complexity- O(1)
