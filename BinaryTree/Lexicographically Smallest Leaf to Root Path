@@ -1,0 +1,67 @@
+Given a binary tree root containing digits from 0 to 9, return the lexicographically smallest leaf to root path.
+
+Constraints
+
+n ≤ 100,000 where n is the number of nodes in root
+
+
+import java.util.*;
+
+/**
+ * public class Tree {
+ *   int val;
+ *   Tree left;
+ *   Tree right;
+ * }
+ */
+class Solution {
+    private static ArrayList <Integer>ans=null;
+    public int[] solve(Tree root) {
+        ans=new ArrayList();
+        ans.add(Integer.MAX_VALUE);
+        calculate(root, new ArrayList());
+        Collections.reverse(ans);
+        return ans.stream().mapToInt(k->k).toArray();
+    }
+
+    private static void calculate(Tree root, ArrayList<Integer> list)
+    {
+        if(root==null)
+        {
+            return;
+        }
+         list.add(root.val);
+         
+        if(root.left==null && root.right==null)
+        {
+            int i=list.size()-1;
+            int j=ans.size()-1;
+            
+            while(i>=0 && list.size()>i && ans.size()>j)
+            {
+                
+                if(list.get(i)<ans.get(j))
+            {
+                ans=list;
+                 return;
+            }
+            else if(list.get(i)==ans.get(j))
+            {
+                i--;
+                j--;
+            }
+            else
+            {
+                break;
+            }
+            }
+        }
+        ArrayList l=(ArrayList)list.clone();
+        ArrayList r=(ArrayList)list.clone();
+        calculate(root.left, l);
+        calculate(root.right, r);
+    }
+}
+
+Time Complexity- O(n)
+Space Complexity- O(n)
